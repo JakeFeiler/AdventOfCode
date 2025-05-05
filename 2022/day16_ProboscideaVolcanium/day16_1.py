@@ -1,0 +1,79 @@
+#!/opt/anaconda3/bin/python
+#Jake Feiler
+
+
+#Run using really really bad DFS code
+
+import sys
+from copy import deepcopy
+
+def get_input(text):
+    '''Read input from file'''
+    input_file = open(text, 'r')
+    return [line.strip() for line in input_file]
+
+def parse_valve(valve_line):
+    '''Get the flow rate/tunnels of this valve'''
+    equal = valve_line.index('=')
+    sc = valve_line.index(';')
+    flow_rate = int(valve_line[equal + 1:sc])
+
+    #there are commas with multiple valves, not with single valve
+    if valve_line[-4] == ',':
+        #muliple lines
+        paths = valve_line[sc + 25:].split(', ')
+    else:
+        paths = [valve_line[-2:]]
+    return [flow_rate, paths]
+
+def plan_a_path(current_location, valve_options, remaining_minutes, route_so_far, last_visited):
+    '''Choose a direction to go to maximize flow'''
+    if remaining_minutes <= 0:
+        return 0
+    next_option_results = [0]
+
+    current_flow = valve_options[current_location][0]
+    next_destinations = valve_options[current_location][1]
+
+    if current_flow != 0:
+        value_options_copy = deepcopy(valve_options)
+        value_options_copy[current_location][0] = 0
+        next_option_results.append(plan_a_path(current_location,  value_options_copy, remaining_minutes - 1, route_so_far, '') + (remaining_minutes - 1) * current_flow)
+
+    #If we're at the best possible flow remaining, it should be opened, don't bother with paths
+    if current_flow == max(details[0] for details in valve_options.values()):
+        return max(next_option_results)
+
+    for destination in next_destinations:
+        if destination == last_visited:
+            continue
+        #Maybe tracking route will be relevant for part 2?
+        updated_route = deepcopy(route_so_far)
+        updated_route.append(current_location)
+        next_option_results.append(plan_a_path(destination, deepcopy(valve_options), remaining_minutes - 1, updated_route, current_location))
+
+    return max(next_option_results)
+
+
+
+def main():
+    s = get_input('input_test.txt')
+    valve_options = {}
+    for valve in s:
+        valve_name = valve[6:8]
+        valve_options[valve_name] = parse_valve(valve)
+
+    
+
+        
+    minute = 0
+    location = 'AA'
+    flow_rate = 0
+    total_flow = 0
+    planned_path = []
+
+    print(plan_a_path(location, valve_options,30, [], ''))
+
+
+
+main()

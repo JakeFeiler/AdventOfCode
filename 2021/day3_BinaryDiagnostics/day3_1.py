@@ -1,0 +1,39 @@
+#!/opt/anaconda3/bin/python
+#Jake Feiler
+
+import sys
+
+def get_input(text):
+    '''Read input from file'''
+    input_file = open(text, 'r')
+    print(type(input_file))
+    sys.exit(0)
+    return [line.strip() for line in input_file]
+
+def main():
+    s = get_input('input.txt')
+
+    gamma = 0
+    epsilon = 0
+
+    bit_size = len(s[0])
+
+    for bit in range(bit_size):
+        bit_counter = 0
+        for code in s:
+            if code[bit] == '1':
+                bit_counter += 1
+            else:
+                bit_counter -= 1
+        #increase gamma if there were more 1's than 0's
+        #otherwise, increase epsilon
+        if bit_counter > 0:
+            gamma += pow(2, bit_size - 1 - bit)
+        else:
+            epsilon += pow(2, bit_size - 1 - bit)
+    print(gamma*epsilon)
+
+
+
+
+main()

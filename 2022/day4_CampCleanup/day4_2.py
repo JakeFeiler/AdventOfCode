@@ -1,0 +1,24 @@
+#!/opt/anaconda3/bin/python
+#Jake Feiler
+
+import sys
+
+def get_input(text):
+    '''Read input from file'''
+    input_file = open(text, 'r')
+    return [line.strip() for line in input_file]
+
+def main():
+    s = get_input('input.txt')
+    total_groups = len(s)
+    for pairing in s:
+        elf_1, elf_2 = pairing.split(',')
+        elf_1_start, elf_1_stop = map(int, elf_1.split('-'))
+        elf_2_start, elf_2_stop = map(int, elf_2.split('-'))
+        if elf_1_start > elf_2_stop or elf_2_start > elf_1_stop:
+            #print(pairing)
+            total_groups -= 1
+
+    print(total_groups)
+
+main()

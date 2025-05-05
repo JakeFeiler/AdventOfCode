@@ -1,0 +1,41 @@
+#!/opt/anaconda3/bin/python
+#Jake Feiler
+
+import sys
+
+def get_input(text):
+    '''Read input from file'''
+    input_file = open(text, 'r')
+    return [line.strip() for line in input_file]
+
+def calculate_num_offspring(days_left_in_cycle, days_left_total):
+    '''Determine how many fish are going to be made'''
+    days_left_total -= days_left_in_cycle
+    #if days <= 0, there weren't any more cycles to run
+    if days_left_total <= 0:
+        return 1
+    else:
+        #have to decrease days by 1, it takes 1 more day to spawn 2 new fish
+        return calculate_num_offspring(6, days_left_total - 1) + calculate_num_offspring(8, days_left_total - 1)
+
+
+def main():
+    s = get_input('input.txt')
+    fish_list = list(map(int,s[0].split(',')))
+
+    fish_offspring = {}
+    total_fish = 0
+
+    #dictionary of starting values, so don't repeat work
+    for fish in fish_list:
+        if fish in fish_offspring:
+            total_fish += fish_offspring[fish]
+        else:
+            days_left_total = 80
+            new_fish = calculate_num_offspring(fish, days_left_total)
+            fish_offspring[fish] = new_fish
+            total_fish += new_fish
+
+    print(total_fish)
+    
+main()

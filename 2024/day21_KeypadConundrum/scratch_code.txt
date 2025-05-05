@@ -1,0 +1,47 @@
+
+
+LU
+H:V (wins)
+<^
+V<<A>^A>A
+<vA<AA>>^AvA<^A>AvA^A
+
+V:H
+^<
+<Av<A>>^A
+v<<A>>^A<vA<A>>^AvAA<^A>A
+
+LD
+H:V (wins)
+<v
+v<<A>A>^A
+v<A<AA>>^AvA^AvA<^A>A
+
+V:H
+v<
+v<A<A>>^A
+v<A<A>>^Av<<A>>AvAA<^A>A
+
+
+
+RU
+H:V 
+>^
+vA<^A>A
+V<A>>^AV<<A>^A>AvA^A
+
+V:H (wins)
+^>
+<AV>A^A
+v<<A>>^Av<A>A^A<A>A
+
+RD
+H:V
+>v
+vA<A^>A
+v<A^>Av<<A>>^A<A>vA^A
+
+V:H (wins)
+v>
+v<A>A^A
+v<A<A>>^AvA^A<A>A

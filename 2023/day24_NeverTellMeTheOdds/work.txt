@@ -1,0 +1,50 @@
+X0 + VX0 * t1 = X1 + VX1 * t1
+Y0 + VY0 * t1 = Y1 + VY1 * t1
+Z0 + VZ0 * t1 = Z1 + VZ1 * t1
+
+X0 = X1 + VX1 * t1 - VX0 * t1
+Y0 = Y1 + VY1 * t1 - VY0 * t1
+Z0 = Z1 + VZ1 * t1 - VZ0 * t1
+
+
+X0 + VX0 * t2 = X2 + VX2 * t2
+Y0 + VY0 * t2 = Y2 + VY2 * t2
+Z0 + VZ0 * t2 = Z2 + VZ2 * t2
+
+
+X1 + VX1 * t1 - VX0 * t1 + VX0 * t2 = X2 + VX2 * t2
+Y1 + VY1 * t1 - VY0 * t1 + VY0 * t2 = Y2 + VY2 * t2
+Z1 + VZ1 * t1 - VZ0 * t1 + VZ0 * t2 = Z2 + VZ2 * t2
+
+
+- VX0 * t1 + VX0 * t2 = X2 + VX2 * t2 - X1 - VX1 * t1
+- VY0 * t1 + VY0 * t2 = Y2 + VY2 * t2 - Y1 - VY1 * t1
+- VZ0 * t1 + VZ0 * t2 = Z2 + VZ2 * t2 - Z1 - VZ1 * t1
+
+VX0 = (X2 + VX2 * t2 - X1 - VX1 * t1)/(t2 - t1)
+VY0 = (Y2 + VY2 * t2 - Y1 - VY1 * t1)/(t2 - t1)
+VZ0 = (Z2 + VZ2 * t2 - Z1 - VZ1 * t1)/(t2 - t1)
+
+
+
+X0 + VX0 * t3 = X3 + VX3 * t3
+Y0 + VY0 * t3 = Y3 + VY3 * t3
+Z0 + VZ0 * t3 = Z3 + VZ3 * t3
+
+
+X1 + VX1 * t1 - VX0 * t1 + VX0 * t3 = X3 + VX3 * t3
+Y1 + VY1 * t1 - VY0 * t1 + VY0 * t3 = Y3 + VY3 * t3
+Z1 + VZ1 * t1 - VZ0 * t1 + VZ0 * t3 = Z3 + VZ3 * t3
+
+X1 + VX1 * t1 + VX0 * (t3 - t1) = X3 + VX3 * t3
+Y1 + VY1 * t1 + VY0 * (t3 - t1) = Y3 + VY3 * t3
+Z1 + VZ1 * t1 + VZ0 * (t3 - t1) = Z3 + VZ3 * t3
+
+X1 + VX1 * t1 + (X2 + VX2 * t2 - X1 - VX1 * t1)/(t2 - t1) * (t3 - t1) = X3 + VX3 * t3
+Y1 + VY1 * t1 + (Y2 + VY2 * t2 - Y1 - VY1 * t1)/(t2 - t1) * (t3 - t1) = Y3 + VY3 * t3
+Z1 + VZ1 * t1 + (Z2 + VZ2 * t2 - Z1 - VZ1 * t1)/(t2 - t1) * (t3 - t1) = Z3 + VZ3 * t3
+
+X1 + VX1 * t1 + (X2 + VX2 * t2 - X1 - VX1 * t1)/(t2 - t1) * (t3 - t1) - X3 - VX3 * t3 = 0
+Y1 + VY1 * t1 + (Y2 + VY2 * t2 - Y1 - VY1 * t1)/(t2 - t1) * (t3 - t1) - Y3 - VY3 * t3 = 0
+Z1 + VZ1 * t1 + (Z2 + VZ2 * t2 - Z1 - VZ1 * t1)/(t2 - t1) * (t3 - t1) - Z3 - VZ3 * t3 = 0
+

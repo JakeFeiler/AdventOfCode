@@ -1,0 +1,19 @@
+x00 X y00 z00 (00s place
+x00 & y00 mcg (carry to 01)
+
+xo1 X y01 vcn
+mcg X vcn z01
+x01 & y01 gbh
+mcg & vcn ndb
+gbh or ndb pqk
+
+(x01 x y01) x mcg: 1 if odd number are 1 (either all, or 1)
+gbh or ndb -> carry to the 002s (either both x gates 1, or 1 is and has a carry)
+
+x02 xor y02: srh
+pqk X srh: z02
+x02 & y02: rgb
+srh & pqk: kkk
+kkk OR rgb: gkk
+
+Continues on in sets of 5
